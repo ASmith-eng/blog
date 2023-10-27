@@ -6,14 +6,18 @@ function Home() {
 
   return (
     <>
-      <header>
-        <nav className="mx-auto flex max-w-7xl items-center p-6 lg:px-8">
-          <div className="mx-auto hidden lg:flex lg:gap-x-10 px-1 border-2 border-indigo-500 rounded-3xl shadow-md">
+      <header className="flex justify-between items-center p-0 ">
+        <div className="px-3">
+          <h1 className="text-xl">Blog Name</h1>
+        </div>
+        <nav className="my-2 flex max-w-7xl bg-gradient-to-r from-blue-300 to-indigo-600 items-center rounded-full">
+          <div className="m-[2px] hidden lg:flex lg:gap-x-10 px-1 bg-white rounded-full shadow-md">
             <Link to={`${root}about`} className="m-1 p-2 font-bold rounded-2xl hover:bg-slate-200">Start here</Link>
             <Link to={`${root}best`} className="m-1 p-2 font-bold rounded-2xl hover:bg-slate-200">My favourites</Link>
             <Link to={`${root}all`} className="m-1 p-2 font-bold rounded-2xl hover:bg-slate-200">All posts</Link>
           </div>
         </nav>
+        <div></div>
       </header>
       <main>
         <div>Test text here</div>
