@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Home() {
+  const [showNav, setShowNav] = useState(false);
+
   const root = import.meta.env.BASE_URL;
 
   return (
     <>
-      <header className="flex justify-between items-center p-0 ">
+      <header className="flex space-between lg:grid lg:grid-cols-3 lg:gap-3 p-0 ">
         <div className="px-3">
           <h1 className="text-xl">Blog Name</h1>
         </div>
-        <nav className="my-2 flex max-w-7xl bg-gradient-to-r from-blue-300 to-indigo-600 items-center rounded-full">
-          <div className="m-[2px] hidden lg:flex lg:gap-x-10 px-1 bg-white rounded-full shadow-md">
-            <Link to={`${root}about`} className="m-1 p-2 font-bold rounded-2xl hover:bg-slate-200">Start here</Link>
-            <Link to={`${root}best`} className="m-1 p-2 font-bold rounded-2xl hover:bg-slate-200">My favourites</Link>
-            <Link to={`${root}all`} className="m-1 p-2 font-bold rounded-2xl hover:bg-slate-200">All posts</Link>
+        <div className="my-2 max-w-7xl bg-gradient-to-r from-blue-300 to-indigo-600 items-center rounded-full">
+          <div className="m-[2px] px-1 bg-white rounded-full shadow-md">
+            <div className="cursor-pointer lg:hidden" onClick={()=>{setShowNav(!showNav)}}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </div>
+            <nav className="justify-center hidden lg:flex lg:gap-x-8">
+              <Link to={`${root}about`} className="m-1 p-2 font-bold rounded-2xl hover:bg-slate-200">Start here</Link>
+              <Link to={`${root}best`} className="m-1 p-2 font-bold rounded-2xl hover:bg-slate-200">My favourites</Link>
+              <Link to={`${root}all`} className="m-1 p-2 font-bold rounded-2xl hover:bg-slate-200">All posts</Link>
+            </nav>
           </div>
-        </nav>
-        <div></div>
+        </div>
       </header>
       <main>
         <div>Test text here</div>
