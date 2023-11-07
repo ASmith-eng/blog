@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home';
 import PageNotFound from './pages/PageNotFound';
@@ -9,12 +9,12 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter basename="/">
         <Routes>
-          <Route path={root} element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   )
 }
