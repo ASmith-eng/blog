@@ -7,9 +7,11 @@ import './App.css'
 function App() {
   const root = import.meta.env.BASE_URL;
 
+  console.log(root);
+
   return (
     <>
-      <HashRouter basename={root}>
+      <HashRouter basename="/">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<PageNotFound />} />
