@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <HashRouter basename="/">
+      <HashRouter basename={root}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<PageNotFound />} />
