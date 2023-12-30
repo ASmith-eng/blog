@@ -7,7 +7,7 @@ import './App.css'
 function App() {
   const root = import.meta.env.BASE_URL;
 
-  console.log(root);
+  // console.log(root);
 
   return (
     <>
