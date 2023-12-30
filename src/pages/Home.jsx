@@ -10,24 +10,28 @@ function Home() {
 
     return (
       <>
-        <div className="relative cursor-pointer" onClick={()=>{setShowNav(!showNav)}}>
+          <div className="relative cursor-pointer" onClick={()=>{setShowNav(!showNav)}}>
+            {show ? (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            )}
+          </div>
           {show ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-10 h-10">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-10 h-10">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          )}
-        </div>
-        {show ? (
-            <nav className="absolute right-2 my-2 p-2 pr-40 bg-white border-2 border-slate-500 rounded-xl">
-              <Link to={`${root}about`} className="block my-2 text-lg">Start here</Link>
-              <Link to={`${root}best`} className="block my-2 text-lg">My favourites</Link>
-              <Link to={`${root}all`} className="block my-2 text-lg">All posts</Link>
-            </nav>
-        ) : null}
+          <div className="absolute h-screen w-screen top-0 left-0" onClick={() => {setShowNav(false)}}>
+              <div className="absolute top-14 left-0 w-full">
+                <nav className="flex flex-col justify-center gap-1 m-3 bg-white border-2 border-slate-500 rounded-xl"> {/** right-2 my-2 p-2 pr-40 bg-white border-2 border-slate-500 rounded-xl">**/}
+                  <Link to={`${root}about`} className="text-lg m-2">Start here</Link>
+                  <Link to={`${root}best`} className="text-lg m-2">My favourites</Link>
+                  <Link to={`${root}all`} className="text-lg m-2">All posts</Link>
+                </nav>
+              </div>
+          </div>
+          ) : null}
       </>
     )
   };
