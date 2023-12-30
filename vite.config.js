@@ -6,7 +6,7 @@ export default defineConfig((command, mode, ssrBuild) => {
   if(command==='build') {
     // config for built version (production)
     return {
-      base: '/blog/',
+      base: 'https://asmith-eng.github.io/blog/',
       plugins: [react()],
     }
   } else {
