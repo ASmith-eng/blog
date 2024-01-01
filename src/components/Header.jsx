@@ -25,9 +25,9 @@ function Header() {
           <div className="absolute h-screen w-screen top-0 left-0" onClick={() => {setShowNav(false)}}>
               <div className="absolute top-14 left-0 w-full">
                 <nav className="m-3 bg-white border-2 border-slate-500 rounded-xl"> {/** right-2 my-2 p-2 pr-40 bg-white border-2 border-slate-500 rounded-xl">**/}
-                  <Link to={`${root}about`} className="block text-lg m-4">Start here</Link>
-                  <Link to={`${root}best`} className="block text-lg m-4">My favourites</Link>
-                  <Link to={`${root}all`} className="block text-lg m-4">All posts</Link>
+                  <Link to={`about`} className="block text-lg m-4">Start here</Link>
+                  <Link to={`best`} className="block text-lg m-4">My favourites</Link>
+                  <Link to={`all`} className="block text-lg m-4">All posts</Link>
                 </nav>
               </div>
           </div>
