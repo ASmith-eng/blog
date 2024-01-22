@@ -1,6 +1,8 @@
 ---
 title: Test Post
-author: "Alex Smith"
+author: Alex Smith
+date: 2024-01-04
+category: test
 ---
 
 # Markdown content starts here

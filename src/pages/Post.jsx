@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
+// import { useParams } from 'react-router-dom';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Header from '../components/Header';
 import extractFrontMatter from '../helpers/extractFrontMatter';
 
-function Home() {
+function Post() {
   const [markdown, setMarkdown] = useState('');
   const [metaData, setMetaData] = useState({});
   const [content, setContent] = useState('');
 
+//   const routeParams = useParams();
+
   const fetchPost = async () => {
-    const res = await fetch('/markdown/testPost.md');
+    const res = await fetch(`/markdown/${'testPost'}.md`);
     const post = await res.text();
     setMarkdown(post);
   };
@@ -30,6 +33,7 @@ function Home() {
   useEffect(() => {
     console.log(content);
     console.log(metaData);
+    // console.log(routeParams);
   }, [content]);
 
   return (
@@ -45,4 +49,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Post
