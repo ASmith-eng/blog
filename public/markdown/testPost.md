@@ -1,8 +1,9 @@
 ---
+category: test
 title: Test Post
 author: Alex Smith
 date: 2024-01-04
-category: test
+description: This is the description that will preview on the menu pages.
 ---
 
 # Markdown content starts here

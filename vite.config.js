@@ -1,19 +1,21 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import indexPosts from './hooks/indexPosts';
 
 // https://vitejs.dev/config/
-export default defineConfig((command, mode, ssrBuild) => {
-  // if(command==='build') {
-    // config for built version (production)
+export default defineConfig(({ command, mode, ssrBuild }) => {
     return {
       base: '/blog/',
-      plugins: [react()],
+      plugins: [
+        {
+          name: 'build-index',
+          buildStart(options) {
+            // console.log(options);
+            indexPosts();
+            return;
+          }
+        },
+        react()
+      ],
     }
-  // } else {
-  //   // config for 'serve' and 'dev' (local)
-  //   return {
-  //     base: '/',
-  //     plugins: [react()],
-  //   }
-  // }
 })
