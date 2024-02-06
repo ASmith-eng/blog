@@ -6,7 +6,7 @@ const indexPosts = async () => {
     try {
         const rootDir = path.join(__dirname, '..', '..');
         const markdownDir = path.join(rootDir, 'public', 'markdown');
-        const dataDir = path.join(rootDir, 'src', 'data');
+        const dataDir = path.join(rootDir, 'public', 'data');
 
         if (!fs.existsSync(markdownDir)) {
             console.log("Markdown directory not found, creating now...");

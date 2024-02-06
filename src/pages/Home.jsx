@@ -1,45 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Header from '../components/Header';
 import extractFrontMatter from '../helpers/extractFrontMatter';
+import { CategoriesContext } from '../context/categoriesContext';
 
 function Home() {
-  const [markdown, setMarkdown] = useState('');
-  const [metaData, setMetaData] = useState({});
-  const [content, setContent] = useState('');
+  // Header
+  // phot/welcome message
+  // recent posts
+  // categories
+  // footer
 
-  const fetchPost = async () => {
-    const res = await fetch('/markdown/testPost.md');
-    const post = await res.text();
-    setMarkdown(post);
-  };
+  const { categories } = useContext(CategoriesContext);
 
-  useEffect(() => {
-    fetchPost();
-  }, []);
-
-  useEffect(() => {
-    if(!!markdown) {
-      const [rawFrontMatter, frontMatter] = extractFrontMatter(markdown);
-      setMetaData(frontMatter);
-      setContent(markdown.replace(rawFrontMatter[0], ""));
-    }
-  }, [markdown]);
-
-  useEffect(() => {
-    console.log(content);
-    console.log(metaData);
-  }, [content]);
-
+  console.log(categories);
   return (
     <>
       <Header />
       <main>
-        <div className="">
-          <p>{metaData["title"]}</p>
-        </div>
-        <Markdown remarkPlugins={[remarkGfm]} children={content} />
+        {categories.map((category) => {
+          return (
+            <h2>{category}</h2>
+          )
+        })}
       </main>
     </>
   )
