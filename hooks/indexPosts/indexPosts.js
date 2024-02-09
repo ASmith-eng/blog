@@ -39,23 +39,44 @@ const indexPosts = async () => {
         });
         
         if (posts.length) {
+            // Create list of favourites
+            const favourites = posts.filter((post) => post.favourite === 'true');
+            if (favourites.length) {
+                fs.writeFileSync(path.join(dataDir, 'favourites.json'), JSON.stringify(favourites), 'utf8');
+            }
+
             // Fetch list of unique categories
             const categories = new Set(posts.map((post) => post.category));
             categories.delete(undefined);
-            const categoriesJson = JSON.stringify([...categories]);
-            fs.writeFileSync(path.join(dataDir, 'postCategories.json'), categoriesJson, 'utf8');
+            categories.delete('favourites');
+            categories.delete('favorites');
+            if (categories.size) {
+                const categoriesJson = JSON.stringify([...categories]);
+                fs.writeFileSync(path.join(dataDir, 'postCategories.json'), categoriesJson.toLowerCase(), 'utf8');
 
-            categories.forEach((category) => {
-                const categoryPosts = posts.filter((post) => post.category === category);
-                fs.writeFileSync(path.join(dataDir, `${category}.json`), JSON.stringify(categoryPosts), 'utf8');
-            });
+                categories.forEach((category) => {
+                    const categoryPosts = posts.filter((post) => post.category === category);
+                    fs.writeFileSync(path.join(dataDir, `${category}.json`), JSON.stringify(categoryPosts), 'utf8');
+                });
+            } else {
+                // Limit max number of posts in all posts for performance
+                posts.slice(0, 80);
+                fs.writeFileSync(path.join(dataDir, 'allPosts.json'), JSON.stringify(posts), 'utf8');
+            }
 
             // Sort posts by most recent
             posts.sort((a, b) => b.date-a.date);
-            const recentPosts = posts.slice(0, config.maxDisplayRecentPosts);
+            const displayNumber = config.maxDisplayRecentPosts<=20 ? config.maxDisplayRecentPosts : 20;
+            const recentPosts = posts.slice(0, displayNumber);
             fs.writeFileSync(path.join(dataDir, 'recentPosts.json'), JSON.stringify(recentPosts), 'utf8');
 
             // To do: tidy up use of config file - can run app in different modes?
+
+            const manifest = {
+                favourites: !!favourites.length,
+                postListFormat: !!categories.size ? 'categories' : 'allPosts'
+            };
+            fs.writeFileSync(path.join(dataDir, 'manifest.json'), JSON.stringify(manifest), 'utf8');
         }
     } catch (error) {
         throw new Error(error);
