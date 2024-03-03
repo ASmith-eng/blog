@@ -2,6 +2,16 @@ import fs from 'fs';
 import path from 'path';
 import extractFrontMatter from '../../src/helpers/extractFrontMatter';
 
+const addEnvVariables = (object) => {
+    let variables = '';
+    // Read in existing variables to preserve?
+    // const existingEnv = fs.readFileSync(path.join(__dirname, '..', '..', '.env.local'));
+    for (const [key, value] of Object.entries(object)) {
+        variables += `${key}=${value}\n`;
+    }
+    fs.writeFileSync(path.join(__dirname, '..', '..', '.env.local'), variables, 'utf8');
+}
+
 const indexPosts = async () => {
     try {
         const rootDir = path.join(__dirname, '..', '..');
@@ -70,13 +80,11 @@ const indexPosts = async () => {
             const recentPosts = posts.slice(0, displayNumber);
             fs.writeFileSync(path.join(dataDir, 'recentPosts.json'), JSON.stringify(recentPosts), 'utf8');
 
-            // To do: tidy up use of config file - can run app in different modes?
-
-            const manifest = {
-                favourites: !!favourites.length,
-                postListFormat: !!categories.size ? 'categories' : 'allPosts'
-            };
-            fs.writeFileSync(path.join(dataDir, 'manifest.json'), JSON.stringify(manifest), 'utf8');
+            const env = {
+                VITE_POSTLIST_FORMAT: !!categories.size ? 'categories' : 'allPosts',
+                VITE_FAVOURITES: !!favourites.length ? true : false
+            }
+            addEnvVariables(env);
         }
     } catch (error) {
         throw new Error(error);

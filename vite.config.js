@@ -17,5 +17,10 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         },
         react()
       ],
+      server: {
+        watch: {
+          ignored: ['**/.env*']
+        }
+      }
     }
 })

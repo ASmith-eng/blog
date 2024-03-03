@@ -1,5 +1,5 @@
 import { HashRouter, Routes, Route, useParams } from 'react-router-dom'
-import CategoriesProvider from './context/categoriesContext';
+import DataProvider from './context/dataContext';
 import Home from './pages/Home';
 import Post from './pages/Post';
 import PageNotFound from './pages/PageNotFound';
@@ -11,7 +11,7 @@ function App() {
   // console.log(routeParams);
   return (
     <>
-      <CategoriesProvider>
+      <DataProvider>
         <HashRouter basename="/">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -20,7 +20,7 @@ function App() {
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </HashRouter>
-      </CategoriesProvider>
+      </DataProvider>
     </>
   )
 }
