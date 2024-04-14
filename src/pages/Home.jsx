@@ -36,7 +36,7 @@ function Home() {
             </a> */}
             <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 bg-green-500">
               {recentPosts.map((recentPost) => {
-                const urlPathTitle = encodeURIComponent(recentPost.title);
+                const urlPathTitle = encodeURIComponent(recentPost.filename);
                 const date = new Date(recentPost.date).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'short', year: '2-digit' });
                 return (
                   <>

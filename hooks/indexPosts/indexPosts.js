@@ -41,7 +41,7 @@ const indexPosts = async () => {
                     const [rawFrontMatter, frontMatter] = extractFrontMatter(fileContent);
                     if(config.requiredMetadataKeys.every((key) => Object.keys(frontMatter).includes(key))) {
                         if (frontMatter.date) frontMatter.date = new Date(frontMatter.date);
-                        frontMatter.filename = filename;
+                        frontMatter.filename = filename.split('.')[0];
                         posts.push(frontMatter);
                     }
                 }
@@ -68,11 +68,10 @@ const indexPosts = async () => {
                     const categoryPosts = posts.filter((post) => post.category === category);
                     fs.writeFileSync(path.join(dataDir, `${category}.json`), JSON.stringify(categoryPosts), 'utf8');
                 });
-            } else {
-                // Limit max number of posts in all posts for performance
-                posts.slice(0, 80);
-                fs.writeFileSync(path.join(dataDir, 'allPosts.json'), JSON.stringify(posts), 'utf8');
             }
+            // Limit max number of posts in all posts for performance
+            posts.slice(0, 80);
+            fs.writeFileSync(path.join(dataDir, 'allPosts.json'), JSON.stringify(posts), 'utf8');
 
             // Sort posts by most recent
             posts.sort((a, b) => b.date-a.date);

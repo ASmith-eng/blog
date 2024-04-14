@@ -9,21 +9,28 @@ export default function DataProvider({children}) {
     const [allPosts, setAllPosts] = useState([]);
     const [recentPosts, setRecentPosts] = useState([]);
 
+    const [postFilenames, setPostFileNames] = useState([]);
+
     const configureFrontEnd = async () => {
         if (import.meta.env.VITE_POSTLIST_FORMAT === 'categories') {
             await fetchData('postCategories.json', setCategories)
-        } else if (import.meta.env.VITE_POSTLIST_FORMAT === 'allPosts') {
-            await fetchData('allPosts.json', setAllPosts);
         }
+        await fetchData('allPosts.json', setAllPosts);
         await fetchData('recentPosts.json', setRecentPosts);
     }
 
     useEffect(() => {
         configureFrontEnd();
     }, []);
+
+    useEffect(() => {
+        setPostFileNames(allPosts.map((post) => post.filename));
+    }, [allPosts]);
     
     const values = {
         categories,
+        allPosts,
+        postFilenames,
         recentPosts
     };
 
