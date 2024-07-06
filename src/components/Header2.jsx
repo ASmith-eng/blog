@@ -1,11 +1,18 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DataContext } from '../context/dataContext';
 
 function Header() {
   const [showNav, setShowNav] = useState(false);
+  const [small, setSmall] = useState(false);
 
   const { categories } = useContext(DataContext);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', () => setSmall(window.scrollY > 100));
+    }
+  }, []);
 
   const root = import.meta.env.BASE_URL;
   const showFavourites = import.meta.env.VITE_FAVOURITES;
@@ -47,12 +54,12 @@ function Header() {
 
   return (
     <>
-      <header className="flex items-center justify-between md:grid md:grid-cols-4 md:gap-3 px-0 py-1 md:p-0">
+      <header className={`${small ? "py-1" : "py-3"} z-40 flex items-center justify-between sticky top-0 bg-fairy duration-200 md:py-3`}>
         <div className="px-3 md:px-4">
-          <h1 className="text-4xl md:text-2xl">Blog Name</h1>
+          <h1 className={`${small ? "text-xl" : "text-4xl"} duration-200 md:text-2xl`}>Blog Name</h1>
         </div>
         <div className="my-2 md:mx-0 md:col-span-2 flex">
-          <div className="my-[2px] px-1 pr-3 border-2 border-black rounded-sm">
+          <div className="mx-3 md:px-4">
             <div className="">
               <DropdownNav show={showNav} />
             </div>

@@ -48,10 +48,13 @@ function Post() {
     <>
       <Header />
       <main>
-        <div className="">
-          <p>{metaData["title"]}</p>
+
+        <div className="text-2xl px-3 py-1">
+          <h1>{metaData["title"]}</h1>
         </div>
-        <Markdown remarkPlugins={[remarkGfm]} children={content} />
+        <div className="">
+          <Markdown remarkPlugins={[remarkGfm]} children={content} />
+        </div>
       </main>
     </>
   )
