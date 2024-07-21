@@ -1,0 +1,4 @@
+{
+    "requiredMetadataKeys": ["title", "date"],
+    "maxDisplayRecentPosts": 12
+}
