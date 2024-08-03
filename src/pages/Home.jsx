@@ -21,7 +21,7 @@ function Home() {
   return (
     <>
       <Header />
-      <main className="block text-gray-800 bg-marine leading-8">
+      <main className="block text-gray-800 bg-marine mt-[5rem] leading-8">
         <section className="bg-fairy border-none pt-4 pb-10 px-8">
           <hr className="border-gray-800 w-full mb-10 mx-auto"/>
           <div className="text-center lg:w-1/2 lg:mx-auto lg:px-10 lg:mt-10">

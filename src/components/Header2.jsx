@@ -54,7 +54,7 @@ function Header() {
 
   return (
     <>
-      <header className={`${small ? "py-1" : "py-3"} z-40 flex items-center justify-between sticky top-0 bg-fairy duration-200 md:py-3`}>
+      <header className={`${small ? "py-1" : "py-3"} z-40 w-full flex items-center justify-between fixed top-0 bg-fairy duration-200 md:py-3`}>
         <div className="px-3 md:px-4">
           <h1 className={`${small ? "text-xl" : "text-4xl"} duration-200 md:text-2xl`}>Blog Name</h1>
         </div>
