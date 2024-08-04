@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Header from '../components/Header2';
+import Footer from '../components/Footer';
 import extractFrontMatter from '../helpers/extractFrontMatter';
 import { DataContext } from '../context/dataContext';
 
@@ -46,16 +47,18 @@ function Post() {
 
   return (
     <>
-      <Header />
-      <main>
-
-        <div className="text-2xl px-3 py-1">
-          <h1>{metaData["title"]}</h1>
-        </div>
-        <div className="">
-          <Markdown remarkPlugins={[remarkGfm]} children={content} />
-        </div>
-      </main>
+      <div className="min-h-screen flex flex-col flex-nowrap">
+        <Header />
+        <main className="mt-[6rem] flex-grow">
+          <div className="text-2xl px-3 py-1">
+            <h1>{metaData["title"]}</h1>
+          </div>
+          <div className="">
+            <Markdown remarkPlugins={[remarkGfm]} children={content} />
+          </div>
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }

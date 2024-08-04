@@ -4,7 +4,7 @@ function Footer() {
 
     return (
         <>
-            <footer className="bg-brunswick">
+            <footer className="bg-brunswick w-full">
                 <div className="max-w-screen-xl px-4 py-6 mx-auto space-y-6 overflow-hidden sm:px-6 lg:px-8">
                     <nav className="flex flex-wrap justify-center -mx-5 -my-2 text-marine">
                         <div className="px-5 py-2">

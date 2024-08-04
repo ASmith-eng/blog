@@ -35,7 +35,7 @@ function Header() {
           {show ? (
           <div className="absolute h-screen w-screen top-0 left-0" onClick={() => {setShowNav(false)}}>
               <div className="absolute top-16 right-0 w-4/5">
-                <nav className="p-1 bg-white shadow-md rounded-l">
+                <nav className="p-1 bg-background shadow-md rounded-l">
                   {showFavourites && (
                     <Link to={'/favourites'} className="">Favourites</Link>
                   )}
@@ -54,7 +54,7 @@ function Header() {
 
   return (
     <>
-      <header className={`${small ? "py-1" : "py-3"} z-40 w-full flex items-center justify-between fixed top-0 bg-fairy duration-200 md:py-3`}>
+      <header className={`${small ? "py-1" : "py-3"} z-40 w-full flex items-center justify-between fixed top-0 bg-primary duration-200 md:py-3`}>
         <div className="px-3 md:px-4">
           <h1 className={`${small ? "text-xl" : "text-4xl"} duration-200 md:text-2xl`}>Blog Name</h1>
         </div>

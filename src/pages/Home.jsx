@@ -20,9 +20,10 @@ function Home() {
 
   return (
     <>
+      <div className="min-h-screen flex flex-col flex-nowrap">
       <Header />
-      <main className="block text-gray-800 bg-marine mt-[5rem] leading-8">
-        <section className="bg-fairy border-none pt-4 pb-10 px-8">
+      <main className="block text-gray-800 bg-background mt-[5rem] flex-grow leading-8">
+        <section className="bg-primary border-none pt-4 pb-10 px-8">
           <hr className="border-gray-800 w-full mb-10 mx-auto"/>
           <div className="text-center lg:w-1/2 lg:mx-auto lg:px-10 lg:mt-10">
             <h1 className="font-bold text-xl mb-3 lg:text-2xl">Welcome</h1>
@@ -33,7 +34,7 @@ function Home() {
         </section>
         <div className="overflow-hidden w-full h-[54px] rotate-180 border-none">
           <svg className="block w-full h-[56px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z" className="fill-fairy"></path>
+            <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z" className="fill-primary"></path>
           </svg>
         </div>
         <section className="text-gray-800 before:content-divider">
@@ -52,7 +53,7 @@ function Home() {
                 const date = new Date(recentPost.date).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'short', year: '2-digit' });
                 return (
                   <>
-                    <Link to={`/post/${urlPathTitle}`} className="max-w-sm mx-auto group rounded-sm bg-fairy hover:cursor-pointer shadow-[2px_2px_2px_0px] hover:shadow-[6px_4px_1px_0px] duration-150 hover:no-underline hover:translate-x-[-2px] hover:translate-y-[-1px] focus:no-underline active:shadow-none active:translate-x-[4px] active:translate-y-[3px]">
+                    <Link to={`/post/${urlPathTitle}`} className="max-w-sm mx-auto group rounded-sm bg-primary hover:cursor-pointer shadow-[2px_2px_2px_0px] hover:shadow-[6px_4px_1px_0px] duration-150 hover:no-underline hover:translate-x-[-2px] hover:translate-y-[-1px] focus:no-underline active:shadow-none active:translate-x-[4px] active:translate-y-[3px]">
                       <img role="presentation" className="object-cover w-full rounded-t-sm h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?1" />
                       <div className="p-6 space-y-2">
                         <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{recentPost.title}</h3>
@@ -76,6 +77,7 @@ function Home() {
         </div>
       </main>
       <Footer />
+      </div>
     </>
   )
 }

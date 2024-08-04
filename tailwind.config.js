@@ -10,6 +10,10 @@ export default {
     },
     extend: {
       colors: {
+        primary: '#E7F3F7',
+        secondary: '#E7F3F7',
+        accent: '#023F3A',
+        background: '#E4BACC',
         marine: '#E7F3F7',
         cool: '#A2A4D7',
         fairy: '#E4BACC',
