@@ -9,6 +9,9 @@ export default {
       sans: ['Schibsted Grotesk', 'sans-serif' ]
     },
     extend: {
+      fontSize: {
+        '2xs': ['0.6rem', '0.8rem']
+      },
       colors: {
         primary: '#E7F3F7',
         secondary: '#E7F3F7',
