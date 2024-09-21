@@ -53,12 +53,19 @@ function Home() {
                 const date = new Date(recentPost.date).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'short', year: '2-digit' });
                 return (
                   <>
-                    <Link to={`/post/${urlPathTitle}`} className="max-w-sm mx-auto group rounded-sm bg-primary hover:cursor-pointer shadow-[2px_2px_2px_0px] hover:shadow-[6px_4px_1px_0px] duration-150 hover:no-underline hover:translate-x-[-2px] hover:translate-y-[-1px] focus:no-underline active:shadow-none active:translate-x-[4px] active:translate-y-[3px]">
-                      <img role="presentation" className="object-cover w-full rounded-t-sm h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?1" />
-                      <div className="p-6 space-y-2">
-                        <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{recentPost.title}</h3>
-                        <span className="text-xs text-gray-400">{date}</span>
-                        <p>{recentPost.description}</p>
+                    <Link to={`/post/${urlPathTitle}`}>
+                      <div className="group relative block max-w-sm mx-auto rounded bg-background before:absolute before:inset-0 before:rounded before:border-2 before:border-dashed before:border-gray-900 before:group-active:hidden">
+                        <div className="rounded border-2 border-gray-900 bg-primary shadow-md duration-150 group-hover:translate-x-[-5px] group-hover:translate-y-[-3px] group-hover:no-underline group-active:translate-x-[2px] group-active:translate-y-[1px]">
+                          {recentPost.imgUrl && (
+                            // <img role="presentation" className="object-cover w-full rounded-t-sm h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?1" />
+                            <img role="presentation" loading="lazy" className="object-cover w-full rounded-t-sm h-44 bg-gray-500" src={`/img/${recentPost.imgUrl}`} />
+                          )}
+                            <div className="p-6 space-y-2">
+                              <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{recentPost.title}</h3>
+                              <span className="text-xs text-gray-400">{date}</span>
+                              <p className="text-sm">{recentPost.description}</p>
+                            </div>
+                        </div>
                       </div>
                     </Link>
                   </>
