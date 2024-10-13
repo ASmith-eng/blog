@@ -38,7 +38,10 @@ function Home() {
               <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z" className="fill-primary"></path>
             </svg>
           </div>
-          <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+          <div className="w-max text-center mx-auto bg-secondary px-3 -skew-x-12">
+            <h2 className="font-bold text-lg skew-x-12">Recent Posts</h2>
+          </div>
+          <div className="container max-w-6xl px-6 py-8 mx-auto space-y-8 sm:space-y-12">
             {/* <a rel="noopener noreferrer" href="#" className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 bg-gray-900">
               <img src="https://source.unsplash.com/random/480x360" alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 bg-gray-500" />
               <div className="p-6 space-y-2 lg:col-span-5">
@@ -54,7 +57,7 @@ function Home() {
                 return (
                   <React.Fragment key={i}>
                     <Link to={`/post/${urlPathTitle}`} key={i}>
-                      <div className="group relative block max-w-sm mx-auto rounded bg-background before:absolute before:inset-0 before:rounded before:border-2 before:border-dashed before:border-gray-900 before:group-active:hidden">
+                      <div className="group relative block max-w-sm mx-auto rounded bg-background before:absolute before:inset-0 before:rounded before:border-2 before:border-dashed before:border-gray-900 before:active:hidden">
                         <div className="rounded border-2 border-gray-900 bg-primary shadow-md duration-150 group-hover:translate-x-[-5px] group-hover:translate-y-[-3px] group-hover:no-underline group-active:translate-x-[2px] group-active:translate-y-[1px]">
                           {recentPost.imgUrl && (
                             // <img role="presentation" className="object-cover w-full rounded-t-sm h-44 bg-gray-500" src="https://source.unsplash.com/random/480x360?1" />
@@ -76,7 +79,7 @@ function Home() {
               <button type="button" className="px-6 py-3 text-sm rounded-md hover:underline bg-cool">Load more posts...</button>
             </div> */}
           </div>
-          <div className="overflow-hidden w-full h-[54px] rotate-180 border-none">
+          <div className="overflow-hidden w-full h-[56px] rotate-180 border-none">
             <svg className="block w-full h-[56px] rotate-180" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
               <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z" className="fill-brunswick"></path>
             </svg>
