@@ -17,6 +17,9 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         },
         react()
       ],
+      build: {
+        outDir: 'dist',
+      },
       publicDir: 'public',
       server: {
         watch: {
