@@ -4,7 +4,7 @@ import fetchData from '../helpers/fetchData';
 export const DataContext = createContext();
 
 export default function DataProvider({children}) {
-    const [manifest, setManifest] = useState({});
+    // const [manifest, setManifest] = useState({});
     const [categories, setCategories] = useState([]);
     const [allPosts, setAllPosts] = useState([]);
     const [recentPosts, setRecentPosts] = useState([]);
@@ -12,11 +12,16 @@ export default function DataProvider({children}) {
     const [postFilenames, setPostFileNames] = useState([]);
 
     const configureFrontEnd = async () => {
+        const parallelFetchArray = [
+            fetchData('allPosts.json', setAllPosts),
+            fetchData('recentPosts.json', setRecentPosts)
+        ];
+        
         if (import.meta.env.VITE_POSTLIST_FORMAT === 'categories') {
-            await fetchData('postCategories.json', setCategories)
+            parallelFetchArray.push(fetchData('postCategories.json', setCategories));
         }
-        await fetchData('allPosts.json', setAllPosts);
-        await fetchData('recentPosts.json', setRecentPosts);
+
+        await Promise.allSettled(parallelFetchArray);
     }
 
     useEffect(() => {
