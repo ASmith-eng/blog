@@ -19,6 +19,7 @@ function Header() {
 
   const DropdownNav = ({show}) => {
 
+    console.log("categories in header");
     console.log(categories);
     console.log(showFavourites);
 
