@@ -19,10 +19,6 @@ function Header() {
 
   const DropdownNav = ({show}) => {
 
-    console.log("categories in header");
-    console.log(categories);
-    console.log(showFavourites);
-
     return (
       <>
           <div className="relative cursor-pointer z-10" onClick={()=>{setShowNav(!showNav)}}>

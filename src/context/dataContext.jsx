@@ -29,13 +29,6 @@ export default function DataProvider({children}) {
     }, []);
 
     useEffect(() => {
-        console.log("categories, allPosts, and recentPosts");
-        console.log(categories);
-        console.log(allPosts);
-        console.log(recentPosts);
-    }, [recentPosts]);
-
-    useEffect(() => {
         setPostFileNames(allPosts.map((post) => post.filename));
     }, [allPosts]);
     
