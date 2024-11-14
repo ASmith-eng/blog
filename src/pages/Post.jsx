@@ -32,7 +32,7 @@ function Post() {
   }, []);
 
   useEffect(() => {
-    if(!!markdown) {
+    if (!!markdown) {
       const [rawFrontMatter, frontMatter] = extractFrontMatter(markdown);
       setMetaData(frontMatter);
       setContent(markdown.replace(rawFrontMatter[0], ""));
@@ -45,17 +45,35 @@ function Post() {
   //   console.log(routeParams);
   // }, [metaData]);
 
+  const imgPrefix = import.meta.env.BASE_URL + '/img/';
+
   return (
     <>
       <div className="min-h-screen flex flex-col flex-nowrap">
         <Header />
         <main className="mt-[6rem] flex-grow">
-          <div className="text-2xl px-3 py-1">
-            <h1>{metaData["title"]}</h1>
-          </div>
-          <div className="">
-            <Markdown remarkPlugins={[remarkGfm]} children={content} />
-          </div>
+          <header className="max-w-screen-md mx-auto bg-background">
+            {!!metaData["imgUrl"] && (
+              <div
+                style={{ 'backgroundImage': `url(${imgPrefix + metaData["imgUrl"]})` }}
+                className={`w-100 h-32 bg-no-repeat bg-cover bg-center`}>
+              </div>
+            )}
+            <div className="p-4 flex justify-between">
+              <h1 className="text-4xl font-bold my-1">{metaData["title"]}</h1>
+              {!!metaData["date"] && (
+                <div className="text-sm my-1 self-end">{metaData["date"]}</div>
+              )}
+            </div>
+            <div className="overflow-hidden w-full h-[56px] rotate-180 border-none">
+              <svg className="block w-full h-[50px] rotate-180" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z" className="fill-primary"></path>
+              </svg>
+            </div>
+          </header>
+          <article className="w-100 max-w-prose my-10 mx-auto bg-primary px-4 md:px-0">
+            <Markdown className="prose" remarkPlugins={[remarkGfm]} children={content} />
+          </article>
         </main>
         <Footer />
       </div>
