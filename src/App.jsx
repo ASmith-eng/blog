@@ -18,7 +18,6 @@ function App() {
             {/* <Route path="tag/:category" element={<Category />} /> */}
             <Route path="post/:filename" element={<Post />} />
             <Route path="NotFound" element={<PageNotFound />}/>
-            {/* <Route path="*" element={<PageNotFound />} /> */}
             <Route path="*" element={<Navigate to="/NotFound" />} />
           </Routes>
         </HashRouter>

@@ -63,7 +63,7 @@ const indexPosts = async () => {
             if (categories.size) {
                 const categoriesJson = JSON.stringify([...categories]);
                 console.log('about to write categories.json with data');
-                console.log(categoriesJson);
+                // console.log(categoriesJson);
                 fs.writeFileSync(path.join(dataDir, 'postCategories.json'), categoriesJson.toLowerCase(), 'utf8');
 
                 categories.forEach((category) => {
@@ -86,11 +86,13 @@ const indexPosts = async () => {
                 VITE_FAVOURITES: !!favourites.length ? true : false
             }
             console.log('about to add env variables:');
-            console.log(JSON.stringify(env));
+            // console.log(JSON.stringify(env));
             addEnvVariables(env);
         }
     } catch (error) {
-        throw new Error(error);
+        console.log(error.message);
+        if (error.stack) console.log(error.stack);
+        throw new Error(error.message);
     }
 };
 

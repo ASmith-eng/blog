@@ -19,10 +19,6 @@ function Header() {
 
   const DropdownNav = ({show}) => {
 
-    console.log("categories in header");
-    console.log(categories);
-    console.log(showFavourites);
-
     return (
       <>
           <div className="relative cursor-pointer z-10" onClick={()=>{setShowNav(!showNav)}}>
@@ -60,7 +56,9 @@ function Header() {
     <>
       <header className={`${small ? "py-1" : "py-3"} z-40 w-full flex items-center justify-between fixed top-0 bg-primary duration-200 md:py-3`}>
         <div className="px-3 md:px-4">
-          <h1 className={`${small ? "text-xl" : "text-4xl"} duration-200 md:text-2xl`}>Blog Name</h1>
+          <Link to='/'>
+            <h1 className={`${small ? "text-xl" : "text-4xl"} duration-200 md:text-2xl`}>Blog Name</h1>
+          </Link>
         </div>
         <div className="my-2 md:mx-0 md:col-span-2 flex">
           <div className="mx-3 md:px-4">
