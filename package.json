@@ -1,6 +1,6 @@
 {
   "name": "blog",
-  "homepage": "https://asmith-eng.github.io/blog/",
+  "homepage": "https://asmith-eng.github.io/blog/#",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -30,6 +30,6 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.3.3",
-    "vite": "^4.5.13"
+    "vite": "^5.4.18"
   }
 }

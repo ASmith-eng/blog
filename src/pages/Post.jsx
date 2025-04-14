@@ -22,7 +22,7 @@ function Post() {
     if (!postFilenames.includes(routeParams.filename)) {
       navigate('/NotFound');
     }
-    const res = await fetch(`/markdown/${routeParams.filename}.md`);
+    const res = await fetch(`./markdown/${routeParams.filename}.md`);
     const post = await res.text();
     setMarkdown(post);
   };
