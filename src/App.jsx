@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
 import DataProvider from './context/dataContext';
 import Home from './pages/Home';
 import Post from './pages/Post';
@@ -12,7 +12,8 @@ function App() {
   return (
     <>
       <DataProvider>
-        <HashRouter basename="/">
+        {/* <HashRouter basename="/"> */}
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="tag/:category" element={<Category />} /> */}
@@ -20,7 +21,7 @@ function App() {
             <Route path="NotFound" element={<PageNotFound />}/>
             <Route path="*" element={<Navigate to="/NotFound" />} />
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
       </DataProvider>
     </>
   )

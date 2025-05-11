@@ -4,16 +4,15 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Header from '../components/Header2';
 import Footer from '../components/Footer';
-import extractFrontMatter from '../helpers/extractFrontMatter';
 import { DataContext } from '../context/dataContext';
+import extractFrontMatter from '../utils/extractFrontMatter';
+import { publicPaths } from '../config/paths';
 
 function Home() {
   // attempt to fetch preferred language(s) from browser and add fallback of 'en-GB'
   const locale = navigator.languages.length ? [...navigator.languages, 'en-GB'] : [navigator.language, 'en-GB'];
 
   const { recentPosts } = useContext(DataContext);
-
-  const imgPrefix = import.meta.env.BASE_URL + '/img/';
 
   return (
     <>
@@ -57,7 +56,7 @@ function Home() {
                         <div className="group relative block max-w-sm mx-auto rounded bg-background before:absolute before:inset-0 before:rounded before:border-2 before:border-dashed before:border-gray-900 before:active:hidden">
                           <div className="rounded border-2 border-gray-900 bg-primary shadow-md duration-150 group-hover:translate-x-[-5px] group-hover:translate-y-[-3px] group-hover:no-underline group-active:translate-x-[2px] group-active:translate-y-[1px]">
                             {recentPost.imgUrl && (
-                              <img role="presentation" loading="lazy" className="object-cover w-full rounded-t-sm h-44 bg-gray-500" src={imgPrefix + recentPost.imgUrl} />
+                              <img role="presentation" loading="lazy" className="object-cover w-full rounded-t-sm h-44 bg-gray-500" src={publicPaths.imgPrefix + recentPost.imgUrl} />
                             )}
                               <div className="p-6 space-y-2">
                                 <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{recentPost.title}</h3>

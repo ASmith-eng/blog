@@ -12,7 +12,7 @@ export default defineConfig(async ({ command, mode, ssrBuild }) => {
   }
 
   return {
-    base: '/blog/',
+    base: '/',
     plugins: [
       react()
     ],

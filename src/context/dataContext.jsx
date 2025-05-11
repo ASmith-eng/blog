@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react';
-import fetchData from '../helpers/fetchData';
+import fetchData from '../utils/fetchData';
 
 export const DataContext = createContext();
 

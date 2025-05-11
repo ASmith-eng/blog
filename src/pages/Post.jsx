@@ -4,8 +4,9 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Header from '../components/Header2';
 import Footer from '../components/Footer';
-import extractFrontMatter from '../helpers/extractFrontMatter';
 import { DataContext } from '../context/dataContext';
+import extractFrontMatter from '../utils/extractFrontMatter';
+import { publicPaths } from '../config/paths';
 
 function Post() {
   const [markdown, setMarkdown] = useState('');
@@ -22,7 +23,7 @@ function Post() {
     if (!postFilenames.includes(routeParams.filename)) {
       navigate('/NotFound');
     }
-    const res = await fetch(`./markdown/${routeParams.filename}.md`);
+    const res = await fetch(`${publicPaths.markdownPrefix}/${routeParams.filename}.md`);
     const post = await res.text();
     setMarkdown(post);
   };
@@ -45,8 +46,6 @@ function Post() {
   //   console.log(routeParams);
   // }, [metaData]);
 
-  const imgPrefix = import.meta.env.BASE_URL + '/img/';
-
   return (
     <>
       <div className="min-h-screen flex flex-col flex-nowrap">
@@ -55,7 +54,7 @@ function Post() {
           <header className="max-w-screen-md mx-auto bg-background">
             {!!metaData["imgUrl"] && (
               <div
-                style={{ 'backgroundImage': `url(${imgPrefix + metaData["imgUrl"]})` }}
+                style={{ 'backgroundImage': `url(${publicPaths.imgPrefix + metaData["imgUrl"]})` }}
                 className={`w-100 h-32 bg-no-repeat bg-cover bg-center`}>
               </div>
             )}

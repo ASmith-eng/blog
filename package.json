@@ -1,6 +1,5 @@
 {
   "name": "blog",
-  "homepage": "https://asmith-eng.github.io/blog/#",
   "private": true,
   "version": "0.0.0",
   "type": "module",

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import extractFrontMatter from '../../src/helpers/extractFrontMatter';
+import extractFrontMatter from '../../src/utils/extractFrontMatter';
 
 const addEnvVariables = (object) => {
     let variables = '';
