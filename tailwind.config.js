@@ -6,7 +6,8 @@ export default {
   ],
   theme: {
     fontFamily: {
-      sans: ['Schibsted Grotesk', 'sans-serif' ]
+      sans: ['Schibsted Grotesk', 'sans-serif' ],
+      headline: ['Syne Mono', 'serif']
     },
     extend: {
       fontSize: {
