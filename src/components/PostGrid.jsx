@@ -23,8 +23,35 @@ function Home2() {
 
     <div className="bg-gray-50 py-2 text-accent sm:py-2">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-        <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
-          <div className="relative lg:row-span-2 lg:col-span-2">
+        <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-5">
+
+        {recentPosts.map((recentPost, i) => {
+          const urlPathTitle = encodeURIComponent(recentPost.filename);
+          return (
+            <React.Fragment key={i}>
+                <div className={`${i === 0 ? 'lg:row-span-2 lg:col-span-3' : 'lg:col-span-2'} border-6 border-vibrant bg-white rounded-sm shadow-lg`}>
+              <Link to={`/post/${urlPathTitle}`} key={i}>
+                  <div className="flex h-full flex-col overflow-hidden">
+                    <div className="px-4 pt-4">
+                      <h3 className="text-3xl font-medium font-headline text-vibrant tracking-tight">{recentPost.title}</h3>
+                      <p className="mt-2 max-w-lg text-sm/6">{recentPost.description}</p>
+                    </div>
+                    <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
+                      <img
+                        className="w-full max-lg:max-w-xs"
+                        loading="lazy"
+                        src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
+                        // src={publicPaths.imgPrefix + recentPost.imgUrl}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+              </Link>
+                </div>
+            </React.Fragment>
+          )
+        })}
+          {/* <div className="lg:row-span-2 lg:col-span-2">
             <div className="absolute inset-px rounded-lg bg-white lg:rounded-l-4xl"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
               <div className="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
@@ -46,8 +73,8 @@ function Home2() {
               </div>
             </div>
             <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 lg:rounded-l-4xl"></div>
-          </div>
-          <div className="border-8 border-accent bg-white rounded-sm">
+          </div> */}
+          <div className="border-6 border-vibrant bg-white rounded-sm">
             <div className="flex h-full flex-col overflow-hidden">
               {/* <div className="px-4 pt-4 sm:px-4 sm:pt-4"> */}
               <div className="px-4 pt-4">
@@ -68,7 +95,7 @@ function Home2() {
             </div>
             {/* <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 max-lg:rounded-t-4xl"></div> */}
           </div>
-          <div className="relative">
+          {/* <div className="relative">
             <div className="absolute inset-px rounded-lg bg-white"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
               <div className="px-8 pt-8 sm:px-10 sm:pt-10">
@@ -86,8 +113,8 @@ function Home2() {
               </div>
             </div>
             <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5"></div>
-          </div>
-          <div className="relative lg:row-span-2">
+          </div> */}
+          {/* <div className="relative lg:row-span-2">
             <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-b-4xl lg:rounded-r-4xl"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
               <div className="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
@@ -108,12 +135,12 @@ function Home2() {
                       <div className="border-r border-gray-600/10 px-4 py-2">App.jsx</div>
                     </div>
                   </div>
-                  <div className="px-6 pt-6 pb-14">{/* Your code example */}</div>
+                  <div className="px-6 pt-6 pb-14"></div>
                 </div>
               </div>
             </div>
             <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 max-lg:rounded-b-4xl lg:rounded-r-4xl"></div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

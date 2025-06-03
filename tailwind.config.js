@@ -17,11 +17,15 @@ export default {
         primary: '#E7F3F7',
         secondary: '#E7F3F7',
         accent: '#023F3A',
+        vibrant: '#f20c92',
         background: '#E4BACC',
         marine: '#E7F3F7',
         cool: '#A2A4D7',
         fairy: '#E4BACC',
         brunswick: '#023F3A',
+      },
+      borderWidth: {
+        '6': '6px'
       }
     }
   },
