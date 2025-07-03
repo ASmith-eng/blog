@@ -16,38 +16,47 @@ function Home2() {
       <div className="min-h-screen flex flex-col flex-nowrap">
         <Header />
         <main className="block text-gray-800 bg-background mt-[5rem] flex-grow leading-8">
+          {/* <div className="absolute top-40">
+          <div className="border-[1px] border-gray-400 rounded-full px-4 mx-auto filter backdrop-blur-xl bg-gray-400/30">
+            Button
+          </div>
+          </div> */}
           <section className="">
             <div className="">
 
 
 
     <div className="bg-gray-50 py-2 text-accent sm:py-2">
-      <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-        <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-5">
+      <div className="mx-auto max-w-sm px-6 md:max-w-7xl lg:px-8">
+        <div className="mt-10 grid gap-4 sm:mt-16 md:grid-cols-5 md:grid-rows-2">
 
         {recentPosts.map((recentPost, i) => {
           const urlPathTitle = encodeURIComponent(recentPost.filename);
+          const date = new Date(recentPost.date).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'short', year: '2-digit' });
+
           return (
             <React.Fragment key={i}>
-                <div className={`${i === 0 ? 'lg:row-span-2 lg:col-span-3' : 'lg:col-span-2'} border-6 border-vibrant bg-white rounded-sm shadow-lg`}>
-              <Link to={`/post/${urlPathTitle}`} key={i}>
+              <div className={`${i === 0 ? 'md:row-span-2 md:col-span-3' : 'md:col-span-2'} border-[3px] border-vibrant bg-white rounded-sm shadow-lg`}>
+                <Link to={`/post/${urlPathTitle}`} key={i}>
                   <div className="flex h-full flex-col overflow-hidden">
                     <div className="px-4 pt-4">
                       <h3 className="text-3xl font-medium font-headline text-vibrant tracking-tight">{recentPost.title}</h3>
                       <p className="mt-2 max-w-lg text-sm/6">{recentPost.description}</p>
                     </div>
-                    <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
-                      <img
-                        className="w-full max-lg:max-w-xs"
-                        loading="lazy"
-                        src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
-                        // src={publicPaths.imgPrefix + recentPost.imgUrl}
-                        alt=""
-                      />
+                    <div className="flex flex-1 overflow-hidden md:max-h-32 items-center justify-center max-lg:pt-10">
+                      {recentPost.imgUrl && (
+                        <img
+                          className="w-full max-lg:max-w-lg"
+                          loading="lazy"
+                          // src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
+                          src={publicPaths.imgPrefix + recentPost.imgUrl}
+                          alt=""
+                        />
+                      )}
                     </div>
                   </div>
-              </Link>
-                </div>
+                </Link>
+              </div>
             </React.Fragment>
           )
         })}
