@@ -11,56 +11,68 @@ function Home2() {
 
   const { recentPosts } = useContext(DataContext);
 
+  const scrollToId = (elementId) => {
+    document.getElementById(elementId)?.scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
   return (
     <>
       <div className="min-h-screen flex flex-col flex-nowrap">
         <Header />
         <main className="block text-gray-800 bg-background mt-[5rem] flex-grow leading-8">
-          {/* <div className="absolute top-40">
-          <div className="border-[1px] border-gray-400 rounded-full px-4 mx-auto filter backdrop-blur-xl bg-gray-400/30">
-            Button
-          </div>
-          </div> */}
-          <section className="">
+          <section className="h-[calc(100dvh-90px)] flex justify-center flex-wrap content-end py-6">
+              <ul className="flex font-headline text-3xl -rotate-90">
+                <nav className="p-4">
+                  <li className="rotate-[25deg] m-2"><Link to="/about">About</Link></li>
+                  <li className="rotate-[25deg] m-2" onClick={() => scrollToId('recents')}>Recents</li>
+                  <li className="rotate-[25deg] m-2">Categories</li>
+                </nav>
+              </ul>
+          </section>
+
+
+          <section className="scroll-mt-5" id="recents">
             <div className="">
 
 
 
-    <div className="bg-gray-50 py-2 text-accent sm:py-2">
-      <div className="mx-auto max-w-sm px-6 md:max-w-7xl lg:px-8">
-        <div className="mt-10 grid gap-4 sm:mt-16 md:grid-cols-5 md:grid-rows-2">
+              <div className="bg-dark_slate_gray-800 py-2 text-accent sm:py-2">
+                <div className="mx-auto max-w-sm px-6 md:max-w-7xl lg:px-8">
+                  <div className="mt-10 grid gap-4 sm:mt-16 md:grid-cols-5 md:grid-rows-2">
 
-        {recentPosts.map((recentPost, i) => {
-          const urlPathTitle = encodeURIComponent(recentPost.filename);
-          const date = new Date(recentPost.date).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'short', year: '2-digit' });
+                    {recentPosts.map((recentPost, i) => {
+                      const urlPathTitle = encodeURIComponent(recentPost.filename);
+                      const date = new Date(recentPost.date).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'short', year: '2-digit' });
 
-          return (
-            <React.Fragment key={i}>
-              <div className={`${i === 0 ? 'md:row-span-2 md:col-span-3' : 'md:col-span-2'} border-[3px] border-vibrant bg-white rounded-sm shadow-lg`}>
-                <Link to={`/post/${urlPathTitle}`} key={i}>
-                  <div className="flex h-full flex-col overflow-hidden">
-                    <div className="px-4 pt-4">
-                      <h3 className="text-3xl font-medium font-headline text-vibrant tracking-tight">{recentPost.title}</h3>
-                      <p className="mt-2 max-w-lg text-sm/6">{recentPost.description}</p>
-                    </div>
-                    <div className="flex flex-1 overflow-hidden md:max-h-32 items-center justify-center max-lg:pt-10">
-                      {recentPost.imgUrl && (
-                        <img
-                          className="w-full max-lg:max-w-lg"
-                          loading="lazy"
-                          // src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
-                          src={publicPaths.imgPrefix + recentPost.imgUrl}
-                          alt=""
-                        />
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            </React.Fragment>
-          )
-        })}
-          {/* <div className="lg:row-span-2 lg:col-span-2">
+                      return (
+                        <React.Fragment key={i}>
+                          <div className={`${i === 0 ? 'md:row-span-2 md:col-span-3' : 'md:col-span-2'} border-[3px] border-dark_slate_gray bg-honeydew rounded-sm shadow-lg`}>
+                            <Link to={`/post/${urlPathTitle}`} key={i}>
+                              <div className="flex h-full flex-col overflow-hidden">
+                                <div className="px-4 pt-4">
+                                  <h3 className="text-3xl font-medium font-headline text-dark_slate_gray tracking-tight">{recentPost.title}</h3>
+                                  <p className="mt-2 max-w-lg text-sm/6">{recentPost.description}</p>
+                                </div>
+                                <div className="flex flex-1 overflow-hidden md:max-h-32 items-center justify-center max-lg:pt-10">
+                                  {recentPost.imgUrl && (
+                                    <img
+                                      className="w-full max-lg:max-w-lg"
+                                      loading="lazy"
+                                      // src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
+                                      src={publicPaths.imgPrefix + recentPost.imgUrl}
+                                      alt=""
+                                    />
+                                  )}
+                                </div>
+                              </div>
+                            </Link>
+                          </div>
+                        </React.Fragment>
+                      )
+                    })}
+                    {/* <div className="lg:row-span-2 lg:col-span-2">
             <div className="absolute inset-px rounded-lg bg-white lg:rounded-l-4xl"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
               <div className="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
@@ -83,28 +95,28 @@ function Home2() {
             </div>
             <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 lg:rounded-l-4xl"></div>
           </div> */}
-          <div className="border-6 border-vibrant bg-white rounded-sm">
-            <div className="flex h-full flex-col overflow-hidden">
-              {/* <div className="px-4 pt-4 sm:px-4 sm:pt-4"> */}
-              <div className="px-4 pt-4">
-                <h3 className="text-3xl font-medium font-headline tracking-tight">Performance</h3>
-                <p className="mt-2 max-w-lg text-sm/6">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit maiores impedit.
-                </p>
-              </div>
-              <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
-                <img
-                  className="w-full max-lg:max-w-xs"
-                  loading="lazy"
-                  src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
-                  // src={publicPaths.imgPrefix + recentPost.imgUrl}
-                  alt=""
-                />
-              </div>
-            </div>
-            {/* <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 max-lg:rounded-t-4xl"></div> */}
-          </div>
-          {/* <div className="relative">
+                    <div className="border-6 border-vibrant bg-white rounded-sm">
+                      <div className="flex h-full flex-col overflow-hidden">
+                        {/* <div className="px-4 pt-4 sm:px-4 sm:pt-4"> */}
+                        <div className="px-4 pt-4">
+                          <h3 className="text-3xl font-medium font-headline tracking-tight">Performance</h3>
+                          <p className="mt-2 max-w-lg text-sm/6">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit maiores impedit.
+                          </p>
+                        </div>
+                        <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
+                          <img
+                            className="w-full max-lg:max-w-xs"
+                            loading="lazy"
+                            src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
+                            // src={publicPaths.imgPrefix + recentPost.imgUrl}
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                      {/* <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 max-lg:rounded-t-4xl"></div> */}
+                    </div>
+                    {/* <div className="relative">
             <div className="absolute inset-px rounded-lg bg-white"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
               <div className="px-8 pt-8 sm:px-10 sm:pt-10">
@@ -123,7 +135,7 @@ function Home2() {
             </div>
             <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5"></div>
           </div> */}
-          {/* <div className="relative lg:row-span-2">
+                    {/* <div className="relative lg:row-span-2">
             <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-b-4xl lg:rounded-r-4xl"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
               <div className="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
@@ -150,9 +162,9 @@ function Home2() {
             </div>
             <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 max-lg:rounded-b-4xl lg:rounded-r-4xl"></div>
           </div> */}
-        </div>
-      </div>
-    </div>
+                  </div>
+                </div>
+              </div>
 
               {/* <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {recentPosts.map((recentPost, i) => {
