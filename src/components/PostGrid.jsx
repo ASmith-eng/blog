@@ -17,27 +17,28 @@ function Home2() {
     });
   }
 
+  const linkClass = "p-2 rotate-[35deg] my-6 cursor-pointer lg:border-l-2 lg:border-background lg:hover:border-l-black";
+
   return (
     <>
       <div className="min-h-screen flex flex-col flex-nowrap">
         <Header />
         <main className="block text-gray-800 bg-background mt-[5rem] flex-grow leading-8">
-          <section className="h-[calc(100dvh-90px)] flex justify-center flex-wrap content-end py-6">
+          <section className="h-[calc(100dvh-90px)] flex justify-center flex-wrap content-end pt-2">
               <ul className="flex font-headline text-3xl -rotate-90">
-                <nav className="p-4">
-                  <li className="rotate-[25deg] m-2"><Link to="/about">About</Link></li>
-                  <li className="rotate-[25deg] m-2" onClick={() => scrollToId('recents')}>Recents</li>
-                  <li className="rotate-[25deg] m-2">Categories</li>
+                <nav>
+                  <li className={linkClass}><Link to="/about">About</Link></li>
+                  <li className={linkClass} onClick={() => scrollToId('recents')}>Recents</li>
+                  <li className={linkClass}>Categories</li>
                 </nav>
               </ul>
           </section>
 
+          <div className="w-full h-10 relative top-0 left-0 rotate-[2deg] origin-top-right bg-background">
 
+          </div>
           <section className="scroll-mt-5" id="recents">
             <div className="">
-
-
-
               <div className="bg-dark_slate_gray-800 py-2 text-accent sm:py-2">
                 <div className="mx-auto max-w-sm px-6 md:max-w-7xl lg:px-8">
                   <div className="mt-10 grid gap-4 sm:mt-16 md:grid-cols-5 md:grid-rows-2">

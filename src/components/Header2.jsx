@@ -23,7 +23,7 @@ function Header() {
       <>
           <div className="relative cursor-pointer z-10" onClick={()=>{setShowNav(!showNav)}}>
             {show ? (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-10 h-10">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-10 h-10 text-primary">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
@@ -33,20 +33,18 @@ function Header() {
             )}
           </div>
           {show ? (
-          <div className="absolute h-screen w-screen top-0 left-0 z-0" onClick={() => {setShowNav(false)}}>
-              <div className="absolute top-16 right-0 w-4/5 lg:w-1/3">
-                <nav className="p-1 bg-primary shadow-md border border-black rounded-l">
-                  {showFavourites && (
-                    <Link to={'/favourites'} key="favourites" className="block border-l-2 border-l-primary m-1 p-2 capitalize cursor-pointer lg:hover:bg-background lg:hover:border-l-black">Favourites</Link>
-                  )}
-                  {categories?.length>0 && categories.map((category, i) => {
+            <div className="absolute bg-zinc-900 text-primary h-screen w-screen top-0 left-0 z-0">
+              <nav className="flex flex-col items-center py-20 gap-10 md:gap-20 font-headline text-2xl">
+                {showFavourites && (
+                    <Link to={'/favourites'} key="favourites" className="block w-full md:w-3/5 p-6 capitalize text-center cursor-pointer md:bg-zinc-800 md:border-2 md:border-transparent lg:hover:border-background">Favourites</Link>
+                )}
+                {categories?.length>0 && categories.map((category, i) => {
                     return (
-                      <Link id={i} key={i} to={`/tag/${encodeURIComponent(category)}`} className="block border-l-2 border-l-primary m-1 p-2 capitalize cursor-pointer lg:hover:bg-background lg:hover:border-l-black">{category}</Link>
+                      <Link id={i} key={i} to={`/tag/${encodeURIComponent(category)}`} className="block w-full md:w-3/5 p-6 capitalize text-center cursor-pointer md:bg-zinc-800 md:border-2 md:border-transparent lg:hover:border-background">{category}</Link>
                     )
                   })}
-                </nav>
-              </div>
-          </div>
+              </nav>
+            </div>
           ) : null}
       </>
     )
