@@ -14,6 +14,18 @@ function Header() {
     }
   }, []);
 
+  useEffect(() => {
+    if (showNav) {
+      document.body.classList.add('overflow-hidden');
+      setTimeout(() => {
+        const navElement = document.getElementById('navModal');
+        navElement.classList.add("opacity-100");
+      }, 50);
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+  },[showNav])
+
   const root = import.meta.env.BASE_URL;
   const showFavourites = import.meta.env.VITE_FAVOURITES;
 
@@ -33,19 +45,19 @@ function Header() {
             )}
           </div>
           {show ? (
-            <div className="absolute bg-zinc-900 text-primary h-screen w-screen top-0 left-0 z-0">
-              <nav className="flex flex-col items-center py-20 gap-10 md:gap-20 font-headline text-2xl">
+            <div id="navModal" className="absolute bg-zinc-900 text-primary h-screen w-screen top-0 left-0 z-0 transition duration-200 motion-reduce:transition-none opacity-0 overscroll-contain">
+              <nav className="flex flex-col items-center max-h-full py-20 gap-10 font-headline text-2xl md:text-xl overflow-scroll">
                 {showFavourites && (
                     <Link to={'/favourites'} key="favourites" className="block w-full md:w-3/5 p-6 capitalize text-center cursor-pointer md:bg-zinc-800 md:border-2 md:border-transparent lg:hover:border-background">Favourites</Link>
                 )}
-                {categories?.length>0 && categories.map((category, i) => {
-                    return (
-                      <Link id={i} key={i} to={`/tag/${encodeURIComponent(category)}`} className="block w-full md:w-3/5 p-6 capitalize text-center cursor-pointer md:bg-zinc-800 md:border-2 md:border-transparent lg:hover:border-background">{category}</Link>
-                    )
-                  })}
+                {categories?.length > 0 && categories.map((category, i) => {
+                  return (
+                    <Link id={i} key={i} to={`/tag/${encodeURIComponent(category)}`} className="block w-full md:w-3/5 p-6 capitalize text-center cursor-pointer md:bg-zinc-800 md:border-2 md:border-transparent lg:hover:border-background">{category}</Link>
+                  )
+                })}
               </nav>
             </div>
-          ) : null}
+           ) : null}
       </>
     )
   };
