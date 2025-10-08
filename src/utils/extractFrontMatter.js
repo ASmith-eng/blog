@@ -12,7 +12,7 @@ const extractFrontMatter = (text) => {
       content.forEach((keyValue) => {
         // create object from keyValues
         const [key, value] = keyValue.split(":");
-        frontMatter[key] = value.trim();
+        frontMatter[key] = value?.trim();
       });
     }
     return [rawFrontMatter, frontMatter];
