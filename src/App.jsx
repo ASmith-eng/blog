@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router'
 import DataProvider from './context/dataContext';
 import Home from './pages/Home';
 import Home2 from './components/PostGrid';
